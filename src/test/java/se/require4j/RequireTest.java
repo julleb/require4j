@@ -35,6 +35,7 @@ class RequireTest {
         Require.NonEmpty(new int[] {1,2}, () -> new IllegalArgumentException("shouldNotSee"));
     }
 
+    @Test
     void test_NonEmpty_ShouldThrowException() {
         IllegalArgumentException expectedException = new IllegalArgumentException("error");
 
@@ -57,6 +58,11 @@ class RequireTest {
         IllegalArgumentException arrayException = assertThrows(IllegalArgumentException.class,
             () -> Require.NonEmpty(new int[] {}, () -> expectedException));
         assertEquals(expectedException, arrayException);
+
+        //Test for Map of null
+        Map<String, String> nullMap = null;
+        IllegalArgumentException nullException = assertThrows(IllegalArgumentException.class,
+            () -> Require.NonEmpty(nullMap, () -> expectedException));
     }
 
 
