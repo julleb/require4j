@@ -17,7 +17,7 @@ public class Require {
     public static void NonEmpty(Object obj, Supplier<RuntimeException> exceptionSupplier) {
         switch(obj) {
             case null -> throw exceptionSupplier.get();
-            case String str when str.isEmpty() -> throw exceptionSupplier.get();
+            case String str when Utils.isEmpty(str) -> throw exceptionSupplier.get();
             case Collection<?> collection when collection.isEmpty() -> throw exceptionSupplier.get();
             case Map<?,?> map when map.isEmpty() -> throw exceptionSupplier.get();
             case byte[] byteArray when byteArray.length == 0 -> throw exceptionSupplier.get();

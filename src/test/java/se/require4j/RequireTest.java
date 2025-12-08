@@ -41,7 +41,7 @@ class RequireTest {
 
         // Test for empty String
         IllegalArgumentException stringException = assertThrows(IllegalArgumentException.class,
-            () -> Require.NonEmpty("", () -> expectedException));
+            () -> Require.NonEmpty("   ", () -> expectedException));
         assertEquals(expectedException, stringException);
 
         // Test for empty Collection
