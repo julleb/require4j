@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 public class Require {
 
+    private Require() {}
 
     public static void NonNull(Object obj, Supplier<RuntimeException> exceptionSupplier) {
         if(obj == null) {
