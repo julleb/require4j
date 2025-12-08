@@ -11,8 +11,9 @@ import org.junit.jupiter.api.Test;
 
 class RequireTest {
 
+
     @Test
-    public void test_state() {
+    void test_state() {
         Require.state(true, () -> new IllegalStateException("shouldNotSee"));
         assertThrows(IllegalStateException.class, () ->
             Require.state(false, () -> new IllegalStateException("error")));
