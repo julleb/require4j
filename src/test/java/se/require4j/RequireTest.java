@@ -3,6 +3,7 @@ package se.require4j;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -24,6 +25,9 @@ class RequireTest {
             () -> Require.NonNull(null, () -> expectedException));
 
         assertEquals(expectedException, exception);
+
+        assertThrows(IOException.class,
+            () -> Require.NonNull(null, () -> new IOException("IO error")));
     }
 
     @Test
@@ -63,6 +67,9 @@ class RequireTest {
         Map<String, String> nullMap = null;
         IllegalArgumentException nullException = assertThrows(IllegalArgumentException.class,
             () -> Require.NonEmpty(nullMap, () -> expectedException));
+
+        assertThrows(IOException.class,
+            () -> Require.NonEmpty(null, () -> new IOException("IO error")));
     }
 
 

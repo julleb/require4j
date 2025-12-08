@@ -8,13 +8,13 @@ public class Require {
 
     private Require() {}
 
-    public static void NonNull(Object obj, Supplier<RuntimeException> exceptionSupplier) {
+    public static <E extends Exception> void NonNull(Object obj, Supplier<E> exceptionSupplier) throws E {
         if(obj == null) {
             throw exceptionSupplier.get();
         }
     }
 
-    public static void NonEmpty(Object obj, Supplier<RuntimeException> exceptionSupplier) {
+    public static <E extends Exception> void NonEmpty(Object obj, Supplier<E> exceptionSupplier) throws E {
         switch(obj) {
             case null -> throw exceptionSupplier.get();
             case String str when Utils.isEmpty(str) -> throw exceptionSupplier.get();
