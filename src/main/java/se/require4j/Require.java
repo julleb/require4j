@@ -8,13 +8,13 @@ public class Require {
 
     private Require() {}
 
-    public static <E extends Exception> void NonNull(Object obj, Supplier<E> exceptionSupplier) throws E {
+    public static <E extends Exception> void nonNull(Object obj, Supplier<E> exceptionSupplier) throws E {
         if(obj == null) {
             throw exceptionSupplier.get();
         }
     }
 
-    public static <E extends Exception> void NonEmpty(Object obj, Supplier<E> exceptionSupplier) throws E {
+    public static <E extends Exception> void nonEmpty(Object obj, Supplier<E> exceptionSupplier) throws E {
         switch(obj) {
             case null -> throw exceptionSupplier.get();
             case String str when Utils.isEmpty(str) -> throw exceptionSupplier.get();
@@ -29,7 +29,7 @@ public class Require {
             case boolean [] booleanArray when booleanArray.length == 0 -> throw exceptionSupplier.get();
             case short [] shortArray when shortArray.length == 0 -> throw exceptionSupplier.get();
             case Object[] array when array.length == 0 -> throw exceptionSupplier.get();
-            default -> Require.NonNull(obj, exceptionSupplier);
+            default -> Require.nonNull(obj, exceptionSupplier);
         }
     }
 }
