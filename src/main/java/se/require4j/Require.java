@@ -8,6 +8,12 @@ public class Require {
 
     private Require() {}
 
+    public static <E extends Exception> void state(boolean state, Supplier<E> exceptionSupplier) throws E {
+        if(!state) {
+            throw exceptionSupplier.get();
+        }
+    }
+
     public static <E extends Exception> void nonNull(Object obj, Supplier<E> exceptionSupplier) throws E {
         if(obj == null) {
             throw exceptionSupplier.get();

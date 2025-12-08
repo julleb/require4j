@@ -12,6 +12,13 @@ import org.junit.jupiter.api.Test;
 class RequireTest {
 
     @Test
+    public void test_state() {
+        Require.state(true, () -> new IllegalStateException("shouldNotSee"));
+        assertThrows(IllegalStateException.class, () ->
+            Require.state(false, () -> new IllegalStateException("error")));
+    }
+
+    @Test
     void test_nonNull_ShouldNotThrowException() {
         Require.nonNull("abc", () -> new IllegalArgumentException("shouldNotSee"));
         Require.nonNull(123, () -> new IllegalArgumentException("shouldNotSee"));
