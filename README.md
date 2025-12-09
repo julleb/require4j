@@ -23,7 +23,7 @@ Require.nonNull(myObject, () -> new IllegalArgument("myObject cant be null"));
 Require.nonEmpty(myList, () -> new MyCustomException("myList is empty"));
 ```
 
-✔ Works with any exception (E extends Exception)
-✔ Simple, extensible, zero dependencies
-✔ Perfect for domain validation & defensive programming
-✔ Super cute, might delete later
+- ✔ Works with any exception (E extends Exception)
+- ✔ Simple, extensible, zero dependencies
+- ✔ Perfect for domain validation & defensive programming
+- ✔ Super cute, might delete later
