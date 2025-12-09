@@ -13,6 +13,15 @@ class RequireTest {
 
 
     @Test
+    void test_Require() {
+        String someData = null;
+        assertThrows(IllegalArgumentException.class, () -> Require.of(someData)
+            .nonNull("cant be null")
+            .orThrows(IllegalArgumentException::new));
+
+    }
+
+    @Test
     void test_state() {
         Require.state(true, () -> new IllegalStateException("shouldNotSee"));
         assertThrows(IllegalStateException.class, () ->
